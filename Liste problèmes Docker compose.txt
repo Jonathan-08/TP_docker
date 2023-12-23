@@ -1,0 +1,15 @@
+Liste problèmes: Docker compose:
+
+- composer n'était pas dans le même deossier que dockerfile pour le copy
+	- mis composer.json et composer.json-lock dans docker/
+- can't run plugin composer as root/super user
+	- set COMPOSER_ALLOW_SUPERUSER=1
+- Composer not up to date
+	- had to run composer update locally
+- php not up to date
+	- had to change the docker php image
+- traduire .htaccess en règle de conf nginx
+- Faire la bonne configuration nginx
+- mettre les container dans un network
+
+https://us04web.zoom.us/j/3208284249?pwd=eXVtdmMzdWlCSk5qWkVEYzJzVCt4UT09

@@ -1,0 +1,55 @@
+
+services:
+  srv1:
+    build:
+      context: ./site1
+      dockerfile: dockerfile
+    ports:
+      - 8080:80
+    volumes:
+      - ./laravel:/var/www/html/
+    depends_on:
+      - php1
+    networks:
+      - myNetwork
+
+  srv2:
+    build:
+      context: ./site2
+      dockerfile: dockerfile
+    ports:
+      - 8081:80
+    volumes:
+      - ./laravel:/var/www/html/
+    depends_on:
+      - php2
+    networks:
+      - myNetwork
+
+  php1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - myNetwork
+  php2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - myNetwork
+
+  db:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+    ports:
+      - "3306:3306"
+    networks:
+      - myNetwork
+
+networks:
+  myNetwork:
+
